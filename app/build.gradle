@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -22,15 +24,53 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.fragment:fragment-ktx:${fragmentVersion}"
+    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
+    implementation "androidx.legacy:legacy-support-v4:${supportLibVersion}"
+    implementation "com.google.android.material:material:${mdcVersion}"
+    implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+    implementation "androidx.core:core-ktx:${ktxVersion}"
+    implementation "androidx.collection:collection:${collectionx}"
+    implementation "androidx.collection:collection-ktx:${collectionx}"
+    implementation "androidx.preference:preference-ktx:${preference_version}"
+    implementation "androidx.viewpager2:viewpager2:${viewpagerVersion}"
+    implementation "androidx.exifinterface:exifinterface:${exifinterfaceVersion}"
+    implementation "androidx.work:work-runtime-ktx:${workManagerVersion}"
+    implementation "androidx.navigation:navigation-fragment-ktx:${navigationVersion}"
+    implementation "androidx.navigation:navigation-ui-ktx:${navigationVersion}"
+
+    // Architecture components
+    implementation "androidx.paging:paging-runtime:${pagingVersion}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${lifecycleVersion}"
+    implementation "androidx.room:room-runtime:${roomVersion}"
+    kapt "androidx.room:room-compiler:${roomVersion}"
+    implementation "androidx.room:room-ktx:${roomVersion}"
+    androidTestImplementation "android.arch.persistence.room:testing:${roomVersion}"
+    // DI
+    implementation "com.google.dagger:dagger:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android:${daggerVersion}"
+    implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    kapt "com.google.dagger:dagger-android-processor:${daggerVersion}"
+    kapt "com.squareup.inject:assisted-inject-processor-dagger2:${assistedinjectVersion}"
+    compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:${assistedinjectVersion}"
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
