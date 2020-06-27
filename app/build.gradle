@@ -70,6 +70,8 @@ dependencies {
     kapt "com.squareup.inject:assisted-inject-processor-dagger2:${assistedinjectVersion}"
     compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:${assistedinjectVersion}"
 
+    // Timber Library
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
