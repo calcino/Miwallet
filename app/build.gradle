@@ -37,7 +37,6 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:${fragmentVersion}"
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "androidx.legacy:legacy-support-v4:${supportLibVersion}"
-    implementation "com.google.android.material:material:${mdcVersion}"
     implementation "androidx.recyclerview:recyclerview:${recyclerViewVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
     implementation "androidx.core:core-ktx:${ktxVersion}"
@@ -78,6 +77,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // ViewPager
-    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01.'
+    implementation "com.google.android.material:material:1.1.0"
 
 }
