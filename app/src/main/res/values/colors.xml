@@ -3,4 +3,16 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+    <color name="blueAppbar">#1565C0</color>
+    <color name="tab_indicator">#FFA000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="text_blue">#0D47A1</color>
+    <color name="text_green">#0C9B45</color>
+    <color name="text_red">#FF5252</color>
+    <color name="text_gray">#707070</color>
+    <color name="back_main_header">#EEF4FB</color>
 </resources>
+
