@@ -39,10 +39,18 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_homePageFragment2_to_incomeFragment"
-            app:destination="@id/incomeFragment" />
+            app:destination="@id/incomeFragment"
+            app:enterAnim="@anim/slide_in_down"
+            app:exitAnim="@anim/slide_out_up"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down"/>
         <action
             android:id="@+id/action_homePageFragment2_to_expenseFragment"
-            app:destination="@id/expenseFragment" />
+            app:destination="@id/expenseFragment"
+            app:enterAnim="@anim/slide_in_down"
+            app:exitAnim="@anim/slide_out_up"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down"/>
     </fragment>
     <fragment
         android:id="@+id/reportFragment"
