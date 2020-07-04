@@ -2,6 +2,7 @@ package com.calcino.miwallet.ui.homepage
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.calcino.miwallet.ui.homepage.fragment.PartialFragment
 
 
 class PagerMain(fragment: Fragment, var list: ArrayList<String>) : FragmentStateAdapter(fragment) {
@@ -12,7 +13,8 @@ class PagerMain(fragment: Fragment, var list: ArrayList<String>) : FragmentState
     }
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = PartialFragment()
+        val fragment =
+            PartialFragment()
 //        fragment.arguments = Bundle().apply {
 //            putInt(list[position], position + 1)
 //        }

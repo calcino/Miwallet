@@ -6,7 +6,64 @@
     app:startDestination="@id/homePageFragment2">
     <fragment
         android:id="@+id/homePageFragment2"
-        android:name="com.calcino.miwallet.ui.homepage.HomePageFragment"
+        android:name="com.calcino.miwallet.ui.homepage.fragment.HomePageFragment"
         android:label="home_page_fragment"
-        tools:layout="@layout/home_page_fragment" />
+        tools:layout="@layout/home_page_fragment">
+        <action
+            android:id="@+id/action_homePageFragment2_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homePageFragment2_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homePageFragment2_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homePageFragment2_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homePageFragment2_to_incomeFragment2"
+            app:destination="@id/incomeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.calcino.miwallet.ui.reportpage.ReportFragment"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.calcino.miwallet.ui.walletpage.WalletFragment"
+        android:label="fragment_wallet"
+        tools:layout="@layout/fragment_wallet" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.calcino.miwallet.ui.resultpage.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.calcino.miwallet.ui.settingpage.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/incomeFragment2"
+        android:name="com.calcino.miwallet.ui.homepage.fragment.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" />
 </navigation>

@@ -14,5 +14,6 @@
     <color name="text_red">#FF5252</color>
     <color name="text_gray">#707070</color>
     <color name="back_main_header">#EEF4FB</color>
+    <color name="rounded_blue_light">#BCE0FD</color>
 </resources>
 
