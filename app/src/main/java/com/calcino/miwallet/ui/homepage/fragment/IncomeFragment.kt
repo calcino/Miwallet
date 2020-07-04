@@ -30,6 +30,7 @@ class IncomeFragment : Fragment() {
     }
 
     private fun bind(view: View) {
+
     }
 
 }

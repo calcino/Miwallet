@@ -63,6 +63,8 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         reportImage.setOnClickListener(this)
         resultImage.setOnClickListener(this)
         settingImage.setOnClickListener(this)
+        cardView_expense.setOnClickListener(this)
+        cardView_income.setOnClickListener(this)
         floatingActionButton.setOnClickListener(this)
 
         list = getMonths()
@@ -133,7 +135,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             list.add(index, dataOutput)
         }
         return list
-        Log.d(TAG, "getMonths: $list")
+//        Log.d(TAG, "getMonths: $list")
     }
 
     override fun onClick(view: View?) {
@@ -142,13 +144,15 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             R.id.report_image -> navController.navigate(R.id.action_homePageFragment2_to_reportFragment)
             R.id.result_image -> navController.navigate(R.id.action_homePageFragment2_to_resultFragment)
             R.id.setting_image -> navController.navigate(R.id.action_homePageFragment2_to_settingFragment)
+            R.id.cardView_income -> navController.navigate(R.id.action_homePageFragment2_to_incomeFragment)
+            R.id.cardView_expense -> navController.navigate(R.id.action_homePageFragment2_to_expenseFragment)
             R.id.floatingActionButton -> {
-                if (cardView_expense.visibility == View.GONE && cardView_income.visibility == View.GONE) {
-                    cardView_expense.visibility = View.VISIBLE
-                    cardView_income.visibility = View.VISIBLE
+                if (layout_expense.visibility == View.GONE && layout_income.visibility == View.GONE) {
+                    layout_expense.visibility = View.VISIBLE
+                    layout_income.visibility = View.VISIBLE
                 } else {
-                    cardView_expense.visibility = View.GONE
-                    cardView_income.visibility = View.GONE
+                    layout_expense.visibility = View.GONE
+                    layout_income.visibility = View.GONE
                 }
             }
         }
