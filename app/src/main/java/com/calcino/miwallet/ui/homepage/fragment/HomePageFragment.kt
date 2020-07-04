@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -19,9 +18,9 @@ import com.calcino.miwallet.db.entity.HeaderItemMain
 import com.calcino.miwallet.db.entity.ListItemMain
 import com.calcino.miwallet.ui.homepage.AdapterMain
 import com.calcino.miwallet.ui.homepage.PagerMain
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.home_page_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,7 +40,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
     private lateinit var reportImage: ImageView
     private lateinit var resultImage: ImageView
     private lateinit var settingImage: ImageView
-    private lateinit var imageView: ImageView
+    private lateinit var floatingActionButton: FloatingActionButton
 
     private var list = listOf<String>()
     private val TAG = "HomePageFragment"
@@ -64,7 +63,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         reportImage.setOnClickListener(this)
         resultImage.setOnClickListener(this)
         settingImage.setOnClickListener(this)
-        imageView.setOnClickListener(this)
+        floatingActionButton.setOnClickListener(this)
 
         list = getMonths()
         viewpager.adapter = PagerMain(
@@ -81,7 +80,6 @@ class HomePageFragment : Fragment(), View.OnClickListener {
 //                it.text = getInt(ARG_OBJECT).toString()
 //            }
 //        }
-
 
 
         val linearLayoutManager = LinearLayoutManager(activity)
@@ -120,7 +118,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         reportImage = view.findViewById(R.id.report_image)
         settingImage = view.findViewById(R.id.setting_image)
         resultImage = view.findViewById(R.id.result_image)
-        imageView  = view.findViewById<ImageView>(R.id.imageView)
+        floatingActionButton = view.findViewById(R.id.floatingActionButton)
     }
 
     private fun getMonths(): ArrayList<String> {
@@ -144,7 +142,15 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             R.id.report_image -> navController.navigate(R.id.action_homePageFragment2_to_reportFragment)
             R.id.result_image -> navController.navigate(R.id.action_homePageFragment2_to_resultFragment)
             R.id.setting_image -> navController.navigate(R.id.action_homePageFragment2_to_settingFragment)
-            R.id.imageView -> navController.navigate(R.id.action_homePageFragment2_to_incomeFragment2)
+            R.id.floatingActionButton -> {
+                if (cardView_expense.visibility == View.GONE && cardView_income.visibility == View.GONE) {
+                    cardView_expense.visibility = View.VISIBLE
+                    cardView_income.visibility = View.VISIBLE
+                } else {
+                    cardView_expense.visibility = View.GONE
+                    cardView_income.visibility = View.GONE
+                }
+            }
         }
     }
 
