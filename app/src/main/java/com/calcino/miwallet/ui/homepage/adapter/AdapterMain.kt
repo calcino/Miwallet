@@ -1,4 +1,4 @@
-package com.calcino.miwallet.ui.homepage
+package com.calcino.miwallet.ui.homepage.adapter
 
 import android.view.LayoutInflater
 import android.view.View

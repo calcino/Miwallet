@@ -16,7 +16,7 @@ import com.calcino.miwallet.R
 import com.calcino.miwallet.db.entity.ContentItemMain
 import com.calcino.miwallet.db.entity.HeaderItemMain
 import com.calcino.miwallet.db.entity.ListItemMain
-import com.calcino.miwallet.ui.homepage.AdapterMain
+import com.calcino.miwallet.ui.homepage.adapter.AdapterMain
 import com.calcino.miwallet.ui.homepage.PagerMain
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -59,13 +59,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         bind(view)
 
         navController = Navigation.findNavController(view)
-        walletImage.setOnClickListener(this)
-        reportImage.setOnClickListener(this)
-        resultImage.setOnClickListener(this)
-        settingImage.setOnClickListener(this)
-        cardView_expense.setOnClickListener(this)
-        cardView_income.setOnClickListener(this)
-        floatingActionButton.setOnClickListener(this)
+        clickListener()
 
         list = getMonths()
         viewpager.adapter = PagerMain(
@@ -85,10 +79,21 @@ class HomePageFragment : Fragment(), View.OnClickListener {
 
 
         val linearLayoutManager = LinearLayoutManager(activity)
-        adapterMain = AdapterMain(listItemMain)
+        adapterMain =
+            AdapterMain(listItemMain)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapterMain
 
+    }
+
+    private fun clickListener() {
+        walletImage.setOnClickListener(this)
+        reportImage.setOnClickListener(this)
+        resultImage.setOnClickListener(this)
+        settingImage.setOnClickListener(this)
+        cardView_expense.setOnClickListener(this)
+        cardView_income.setOnClickListener(this)
+        floatingActionButton.setOnClickListener(this)
     }
 
     private val listItemMain: ArrayList<ListItemMain>
