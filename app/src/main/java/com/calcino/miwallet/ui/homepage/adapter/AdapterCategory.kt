@@ -34,8 +34,7 @@ class AdapterCategory(val list: MutableList<ListItemCategory>) :
             holder.text_title?.text = currentItem.title
         } else {
             holder.text_title?.text = currentItem.title
-            currentItem.image?.let { holder.imageView?.setBackgroundResource(it) }
-
+            currentItem.image?.let { holder.imageView?.setImageResource(it) }
         }
     }
 
