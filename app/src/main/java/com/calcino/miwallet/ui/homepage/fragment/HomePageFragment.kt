@@ -204,11 +204,13 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             R.id.cardView_expense -> navController.navigate(R.id.action_homePageFragment2_to_expenseFragment)
             R.id.floatingActionButton -> {
                 if (layout_expense.visibility == View.GONE && layout_income.visibility == View.GONE) {
+                    constraintLayout.visibility = View.GONE
                     recyclerView.visibility = View.GONE
                     layout_expense.visibility = View.VISIBLE
                     layout_income.visibility = View.VISIBLE
                     layout_money.visibility = View.VISIBLE
                 } else {
+                    constraintLayout.visibility = View.VISIBLE
                     checkVisibility()
                     layout_expense.visibility = View.GONE
                     layout_income.visibility = View.GONE

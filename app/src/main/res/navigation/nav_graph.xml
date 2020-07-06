@@ -59,9 +59,46 @@
         tools:layout="@layout/fragment_report" />
     <fragment
         android:id="@+id/walletFragment"
-        android:name="com.calcino.miwallet.ui.walletpage.WalletFragment"
+        android:name="com.calcino.miwallet.ui.walletpage.fragment.WalletFragment"
         android:label="fragment_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_wallet" >
+        <action
+            android:id="@+id/action_walletFragment_to_homePageFragment22"
+            app:destination="@id/homePageFragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homePageFragment2"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_walletFragment_to_reportFragment"
+            app:destination="@id/reportFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homePageFragment2"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_walletFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homePageFragment2"
+            app:popUpToInclusive="false"/>
+        <action
+            android:id="@+id/action_walletFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homePageFragment2"
+            app:popUpToInclusive="false"/>
+    </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.calcino.miwallet.ui.resultpage.ResultFragment"

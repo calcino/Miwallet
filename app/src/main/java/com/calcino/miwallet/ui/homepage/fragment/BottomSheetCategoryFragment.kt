@@ -1,9 +1,12 @@
 package com.calcino.miwallet.ui.homepage.fragment
 
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.calcino.miwallet.R
@@ -11,10 +14,12 @@ import com.calcino.miwallet.db.entity.ListItemCategory
 import com.calcino.miwallet.ui.homepage.adapter.AdapterCategory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+
 class BottomSheetCategoryFragment : BottomSheetDialogFragment(), View.OnClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapterCategory: AdapterCategory
+    private lateinit var constraintLayout: ConstraintLayout
 
 
     override fun onCreateView(
@@ -29,11 +34,13 @@ class BottomSheetCategoryFragment : BottomSheetDialogFragment(), View.OnClickLis
         super.onViewCreated(view, savedInstanceState)
         bind(view)
         initRecyclerView()
+        constraintLayout.setBackgroundColor(android.graphics.Color.TRANSPARENT)
 
     }
 
     private fun bind(view: View) {
         recyclerView = view.findViewById(R.id.recycler_view_category)
+        constraintLayout = view.findViewById(R.id.bottom_sheet_category_layout)
     }
 
     private fun initRecyclerView() {
