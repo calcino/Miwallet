@@ -5,25 +5,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.calcino.miwallet.HidingScrollListener
 import com.calcino.miwallet.R
 import com.calcino.miwallet.db.entity.ContentItemMain
 import com.calcino.miwallet.db.entity.HeaderItemMain
 import com.calcino.miwallet.db.entity.ListItemMain
-import com.calcino.miwallet.ui.homepage.adapter.AdapterMain
 import com.calcino.miwallet.ui.homepage.PagerMain
+import com.calcino.miwallet.ui.homepage.adapter.AdapterMain
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.home_page_fragment.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 /**
  *
@@ -41,6 +50,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
     private lateinit var resultImage: ImageView
     private lateinit var settingImage: ImageView
     private lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var constraintLayout: ConstraintLayout
 
     private var list = listOf<String>()
     private val TAG = "HomePageFragment"
@@ -57,6 +67,8 @@ class HomePageFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bind(view)
+
+        checkVisibility()
 
         navController = Navigation.findNavController(view)
         clickListener()
@@ -84,6 +96,35 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapterMain
 
+        recyclerView.addOnScrollListener(object : HidingScrollListener() {
+            override fun onHide() {
+                hideViews()
+            }
+
+            override fun onShow() {
+                showViews()
+            }
+        })
+
+    }
+
+    private fun hideViews() {
+        constraintLayout.animate()
+            .translationY((-constraintLayout.height - 40).toFloat()).interpolator =
+            AccelerateInterpolator(1f)
+        CoroutineScope(Main).launch {
+            delay(200)
+            constraintLayout.visibility = View.GONE
+        }
+
+    }
+
+    private fun showViews() {
+        CoroutineScope(Main).launch {
+            delay(200)
+            constraintLayout.visibility = View.VISIBLE
+        }
+        constraintLayout.animate().translationY(0f).interpolator = DecelerateInterpolator(1f)
     }
 
     private fun clickListener() {
@@ -115,6 +156,16 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             return arrayList
         }
 
+    private fun checkVisibility() {
+        if (listItemMain.size > 0) {
+            layout_money.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        } else {
+            layout_money.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        }
+    }
+
 
     private fun bind(view: View) {
         viewpager = view.findViewById(R.id.view_pager)
@@ -126,6 +177,7 @@ class HomePageFragment : Fragment(), View.OnClickListener {
         settingImage = view.findViewById(R.id.setting_image)
         resultImage = view.findViewById(R.id.result_image)
         floatingActionButton = view.findViewById(R.id.floatingActionButton)
+        constraintLayout = view.findViewById(R.id.constraintLayout)
     }
 
     private fun getMonths(): ArrayList<String> {
@@ -140,7 +192,6 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             list.add(index, dataOutput)
         }
         return list
-//        Log.d(TAG, "getMonths: $list")
     }
 
     override fun onClick(view: View?) {
@@ -153,9 +204,12 @@ class HomePageFragment : Fragment(), View.OnClickListener {
             R.id.cardView_expense -> navController.navigate(R.id.action_homePageFragment2_to_expenseFragment)
             R.id.floatingActionButton -> {
                 if (layout_expense.visibility == View.GONE && layout_income.visibility == View.GONE) {
+                    recyclerView.visibility = View.GONE
                     layout_expense.visibility = View.VISIBLE
                     layout_income.visibility = View.VISIBLE
+                    layout_money.visibility = View.VISIBLE
                 } else {
+                    checkVisibility()
                     layout_expense.visibility = View.GONE
                     layout_income.visibility = View.GONE
                 }
