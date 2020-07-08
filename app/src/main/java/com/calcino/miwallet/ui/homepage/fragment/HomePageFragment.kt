@@ -15,13 +15,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.calcino.miwallet.utils.HidingScrollListener
 import com.calcino.miwallet.R
 import com.calcino.miwallet.db.entity.ContentItemMain
 import com.calcino.miwallet.db.entity.HeaderItemMain
 import com.calcino.miwallet.db.entity.ListItemMain
 import com.calcino.miwallet.ui.homepage.PagerMain
 import com.calcino.miwallet.ui.homepage.adapter.AdapterMain
+import com.calcino.miwallet.utils.HidingScrollListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

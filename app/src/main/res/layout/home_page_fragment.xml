@@ -168,8 +168,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+        
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_main"
