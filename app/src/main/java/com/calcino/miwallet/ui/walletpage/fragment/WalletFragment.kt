@@ -90,6 +90,7 @@ class WalletFragment : Fragment(), View.OnClickListener {
             R.id.result_image_wallet -> navController.navigate(R.id.action_walletFragment_to_resultFragment)
             R.id.setting_image_wallet -> navController.navigate(R.id.action_walletFragment_to_settingFragment)
             R.id.floatingActionButton_wallet -> {
+                navController.navigate(R.id.action_walletFragment_to_newWalletFragment)
             }
         }
     }
