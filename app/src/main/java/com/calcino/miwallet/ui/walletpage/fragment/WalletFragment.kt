@@ -54,11 +54,9 @@ class WalletFragment : Fragment(), View.OnClickListener {
 
     private fun initRecyclerView() {
         childAccount.add(0, AccountChild("MoenyTransfer"))
-        childAccount.add(1, AccountChild("MoenyTransfer"))
-        childAccount.add(2, AccountChild("MoenyTransfer"))
-        account.add(0, AccountName(title = "Parsian", items = childAccount))
-        account.add(1, AccountName(title = "Pasargad", items = childAccount))
-        account.add(2, AccountName(title = "Meli", items = childAccount))
+        account.add(0, AccountName(title = "Parsian", balance = 1500, items = childAccount))
+        account.add(1, AccountName(title = "Pasargad", balance = 1500, items = childAccount))
+        account.add(2, AccountName(title = "Meli", balance = 1500, items = childAccount))
 
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager

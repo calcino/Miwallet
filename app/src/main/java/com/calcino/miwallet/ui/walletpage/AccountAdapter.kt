@@ -53,7 +53,7 @@ class AccountViewHolder(itemView: View) : GroupViewHolder(itemView) {
     private val arrowDownward: ImageView
     fun setAccountTitle(group: ExpandableGroup<*>) {
         accountName.text = group.title
-//        balance.text = group.balance.toString()
+        balance.text = group.balance.toString()
     }
 
     override fun expand() {
