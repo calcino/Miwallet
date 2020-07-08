@@ -1,10 +1,12 @@
 package com.calcino.miwallet.ui.walletpage.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,6 +16,7 @@ import com.calcino.miwallet.R
 import com.calcino.miwallet.db.entity.AccountChild
 import com.calcino.miwallet.db.entity.AccountName
 import com.calcino.miwallet.ui.walletpage.AccountAdapter
+import com.calcino.miwallet.ui.walletpage.ChildAccountViewHolder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
@@ -21,7 +24,10 @@ import java.util.*
 /**
 
  */
-class WalletFragment : Fragment(), View.OnClickListener {
+class WalletFragment : Fragment(), View.OnClickListener,
+    ChildAccountViewHolder.OnItemClickListener {
+
+    private final val TAG: String = "Test"
 
     private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var navController: NavController
@@ -53,14 +59,14 @@ class WalletFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initRecyclerView() {
-        childAccount.add(0, AccountChild("MoenyTransfer"))
+        childAccount.add(0, AccountChild("Money Transfer", "Transaction", "Edit"))
         account.add(0, AccountName(title = "Parsian", balance = 1500, items = childAccount))
         account.add(1, AccountName(title = "Pasargad", balance = 1500, items = childAccount))
         account.add(2, AccountName(title = "Meli", balance = 1500, items = childAccount))
 
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
-        val adapter = activity?.let { AccountAdapter(account, it) }
+        val adapter = activity?.let { AccountAdapter(account, it, this) }
         recyclerView.adapter = adapter
 
     }
@@ -94,4 +100,73 @@ class WalletFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
+    override fun onMoneyTransferClick(position: Int, view: View) {
+        Log.d(TAG, "onMoneyTransferClick: ${view.id}")
+        when (position) {
+            1 -> {
+                when (view.id) {
+                    R.id.text_view_money_transfer -> Toast.makeText(
+                        activity, "This is a click on Money",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_transaction -> Toast.makeText(
+                        activity, "This is a click on Transaction",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_edit -> Toast.makeText(
+                        activity, "This is a click on Edit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    override fun onEditClick(position: Int, view: View) {
+        Log.d(TAG, "onMoneyTransferClick: ${view.id}")
+        when (position) {
+            1 -> {
+                when (view.id) {
+                    R.id.text_view_money_transfer -> Toast.makeText(
+                        activity, "This is a click on Money",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_transaction -> Toast.makeText(
+                        activity, "This is a click on Transaction",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_edit -> Toast.makeText(
+                        activity, "This is a click on Edit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+
+    override fun onTransactionClick(position: Int, view: View) {
+        Log.d(TAG, "onMoneyTransferClick: ${view.id}")
+        when (position) {
+            1 -> {
+                when (view.id) {
+                    R.id.text_view_money_transfer -> Toast.makeText(
+                        activity, "This is a click on Money",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_transaction -> Toast.makeText(
+                        activity, "This is a click on Transaction",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    R.id.text_view_edit -> Toast.makeText(
+                        activity, "This is a click on Edit",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+
 }

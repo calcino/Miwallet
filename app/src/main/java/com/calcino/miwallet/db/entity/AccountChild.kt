@@ -5,23 +5,25 @@ import android.os.Parcelable
 
 class AccountChild : Parcelable {
     var monyTransfer: String?
-//    var transaction: String? = "Transactions"
-//    var edit: String? = "Edit"
+    var transaction: String?
+    var edit: String?
 
-    constructor(MoneyTransfer: String?) {
+    constructor(MoneyTransfer: String?, Transaction: String?, Edit: String?) {
         monyTransfer = MoneyTransfer
+        transaction = Transaction
+        edit = Edit
     }
 
     constructor(parcel: Parcel) {
         monyTransfer = parcel.readString()
-//        transaction = parcel.readString()
-//        edit = parcel.readString()
+        transaction = parcel.readString()
+        edit = parcel.readString()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(monyTransfer)
-//        parcel.writeString(transaction)
-//        parcel.writeString(edit)
+        parcel.writeString(transaction)
+        parcel.writeString(edit)
     }
 
     override fun describeContents(): Int {
