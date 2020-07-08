@@ -8,15 +8,13 @@ import androidx.room.PrimaryKey
 data class Account(
     @PrimaryKey
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
     @ColumnInfo(name = "balance")
-    val balance: Long,
+    var balance: Long,
     @ColumnInfo(name = "color")
     val color: Int,
     @ColumnInfo(name = "icon")
     val icon: Int,
     @ColumnInfo(name = "currency_type")
-    val currency_type:Int
+    val currency_type: Int
 )
-
-

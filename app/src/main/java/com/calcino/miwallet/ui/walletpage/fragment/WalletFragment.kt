@@ -8,8 +8,14 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.calcino.miwallet.R
+import com.calcino.miwallet.db.entity.AccountChild
+import com.calcino.miwallet.db.entity.AccountName
+import com.calcino.miwallet.ui.walletpage.AccountAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
 
 
 /**
@@ -24,6 +30,9 @@ class WalletFragment : Fragment(), View.OnClickListener {
     private lateinit var reportImage: ImageView
     private lateinit var resultImage: ImageView
     private lateinit var settingImage: ImageView
+    private lateinit var recyclerView: RecyclerView
+    private val account: MutableList<AccountName?> = ArrayList()
+    private val childAccount: MutableList<AccountChild?> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +48,23 @@ class WalletFragment : Fragment(), View.OnClickListener {
         bind(view)
         clickListener()
         navController = Navigation.findNavController(view)
+
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        childAccount.add(0, AccountChild("MoenyTransfer"))
+        childAccount.add(1, AccountChild("MoenyTransfer"))
+        childAccount.add(2, AccountChild("MoenyTransfer"))
+        account.add(0, AccountName(title = "Parsian", items = childAccount))
+        account.add(1, AccountName(title = "Pasargad", items = childAccount))
+        account.add(2, AccountName(title = "Meli", items = childAccount))
+
+        val layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = layoutManager
+        val adapter = activity?.let { AccountAdapter(account, it) }
+        recyclerView.adapter = adapter
+
     }
 
     private fun clickListener() {
@@ -56,6 +82,7 @@ class WalletFragment : Fragment(), View.OnClickListener {
         reportImage = view.findViewById(R.id.report_image_wallet)
         settingImage = view.findViewById(R.id.setting_image_wallet)
         resultImage = view.findViewById(R.id.result_image_wallet)
+        recyclerView = view.findViewById(R.id.recycler_view_account)
     }
 
     override fun onClick(v: View?) {

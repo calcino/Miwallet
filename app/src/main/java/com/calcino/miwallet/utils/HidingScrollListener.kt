@@ -1,4 +1,4 @@
-package com.calcino.miwallet
+package com.calcino.miwallet.utils
 
 import androidx.recyclerview.widget.RecyclerView
 

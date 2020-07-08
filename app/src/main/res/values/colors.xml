@@ -17,5 +17,6 @@
     <color name="back_main_header">#EEF4FB</color>
     <color name="rounded_blue_light">#BCE0FD</color>
     <color name="float_action_button">#EF6C00</color>
+    <color name="back_account_light_blue">#F5F5F5</color>
 </resources>
 
