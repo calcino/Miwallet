@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_marginLeft="4dp"
+    android:layout_marginTop="-6dp"
     android:layout_marginRight="4dp"
-    android:layout_marginTop="-10dp"
-    android:elevation="8dp">
+    app:cardElevation="6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:padding="15dp">
 
         <ImageView
@@ -50,7 +51,6 @@
             android:id="@+id/text_list_cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:text="-$150.00"
             android:textColor="@color/text_red"
             android:textSize="18sp"
@@ -63,12 +63,12 @@
             android:id="@+id/text_list_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="21:00"
             android:textColor="@color/text_blue"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.983"
+            app:layout_constraintHorizontal_bias="0.971"
             app:layout_constraintStart_toEndOf="@+id/text_list_subtitle"
             app:layout_constraintTop_toBottomOf="@+id/text_list_cost" />
 
